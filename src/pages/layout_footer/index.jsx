@@ -6,7 +6,7 @@ import Footer from "../../components/footer";
 const FooterLayout = () => {
   return (
     <>
-      <main className="min-h-[600px] p-[3%]">
+      <main>
         <Outlet />
       </main>
       <Footer />
