@@ -28,7 +28,7 @@ const Header = () => {
         >
           Posts
         </NavLink>
-        <NavLink
+        {/* <NavLink
           className={({ isActive }) =>
             `uppercase text-2xl text-gray-600 ${
               isActive ? "text-red-500 underline" : ""
@@ -37,7 +37,7 @@ const Header = () => {
           to={"/sdfgh"}
         >
           NotFound
-        </NavLink>
+        </NavLink> */}
         <NavLink
           onClick={() => alert("are you sure?")}
           className={({ isActive }) =>
