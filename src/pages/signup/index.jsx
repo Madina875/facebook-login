@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   return (
     <section className="bg-[#f0f2f5]">
       <div className="container place-items-center py-[30px]">
@@ -137,7 +139,10 @@ const SignUp = () => {
               You may receive SMS Notifications from us and can opt out any
               time.
             </p>
-            <button className="m-auto block w-[43%] h-[35px] rounded-[4px] bg-[#00a400] text-white text-[20px]  font-medium mb-[16px]">
+            <button
+              onClick={() => navigate("/home")}
+              className="m-auto block w-[43%] h-[35px] rounded-[4px] bg-[#00a400] text-white text-[20px]  font-medium mb-[16px]"
+            >
               Sign Up
             </button>
             <p className="text-center mb-[15px] text-[#1877f4] text-[16px]">

@@ -39,6 +39,7 @@ const Header = () => {
           NotFound
         </NavLink>
         <NavLink
+          onClick={() => alert("are you sure?")}
           className={({ isActive }) =>
             `uppercase text-2xl text-gray-600 ${
               isActive ? "text-red-500 underline" : ""
@@ -46,7 +47,7 @@ const Header = () => {
           }
           to={"/"}
         >
-          login
+          | logout
         </NavLink>
       </div>
     </header>
