@@ -26,7 +26,6 @@ const SignUp = ({ setData }) => {
       password,
     };
     setData((prev) => [...prev, user]);
-    console.log(data);
   };
 
   return (
