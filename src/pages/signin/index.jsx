@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const SignIn = () => {
+const SignIn = ({ data }) => {
   const navigate = useNavigate();
+  const [emNum, setemNum] = useState("");
+  const [password, setPassword] = useState("");
+
+  console.log(data);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const found = data.find(
+      (user) => user.numEm === emNum && user.password === password
+    );
+    if (found) {
+      navigate("/home");
+    } else {
+      navigate("/not-user");
+      console.log("Invalid credentials");
+    }
+  };
 
   return (
     <section className="h-[700px] bg-[#f2f4f7]">
@@ -14,16 +30,23 @@ const SignIn = () => {
           </p>
         </div>
         <div className="place-items-center w-[40%]">
-          <form className="flex flex-col w-[100%] p-[5%] rounded-[6px] gap-[10px] bg-white mb-[6%]">
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col w-[100%] p-[5%] rounded-[6px] gap-[10px] bg-white mb-[6%]"
+          >
             <input
               className="w-[100%] h-[50px] border border-gray-300 indent-4 rounded-[6px] text-[18px]"
               type="text"
               placeholder="Email or phone number"
+              value={emNum}
+              onChange={(e) => setemNum(e.target.value)}
             />
             <input
               className="w-[100%] h-[50px] border rounded-[6px]  indent-4 border-gray-300 text-[18px]"
               type="text"
               placeholder="Passsword"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <button className="h-[50px] bg-[#0866ff] text-white rounded-[6px] text-[20px] font-bold">
               Log in

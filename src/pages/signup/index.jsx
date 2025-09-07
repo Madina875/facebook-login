@@ -1,8 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const SignUp = () => {
+const SignUp = ({ setData }) => {
   const navigate = useNavigate();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [month, setMonth] = useState("");
+  const [day, setDay] = useState("");
+  const [year, setYear] = useState("");
+  const [gender, setGender] = useState("");
+  const [numEm, setnumEm] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    let user = {
+      id: Date.now(),
+      firstName,
+      lastName,
+      gender,
+      day,
+      month,
+      year,
+      numEm,
+      password,
+    };
+    setData((prev) => [...prev, user]);
+    console.log(data);
+  };
 
   return (
     <section className="bg-[#f0f2f5]">
@@ -11,6 +36,7 @@ const SignUp = () => {
           facebook
         </h2>
         <form
+          onSubmit={handleSubmit}
           action=""
           className="bg-white  h-[100%] w-[45%] place-items-center text-black rounded-[8px] py-[10px]"
         >
@@ -25,11 +51,15 @@ const SignUp = () => {
             <div className="mt-[18px] w-[100%] flex gap-[12px] ">
               <input
                 type="text"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
                 placeholder="First name"
                 className="indent-3 border border-gray-300 h-[45px] w-[100%] rounded-[5px]"
               />
               <input
                 type="text"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
                 placeholder="Last name"
                 className="indent-3 border border-gray-300 h-[45px] w-[100%] rounded-[5px]"
               />
@@ -47,7 +77,12 @@ const SignUp = () => {
               </svg>
             </p>
             <div className="grid grid-cols-3 gap-[13px] h-[35px] mt-[10px]">
-              <select className="border border-gray-300 rounded-[4px] indent-3 h-[40px] w-[100%]">
+              <select
+                className="border border-gray-300 rounded-[4px] indent-3 h-[40px] w-[100%]"
+                value={month}
+                onChange={(e) => setMonth(e.target.value)}
+              >
+                <option value="">Month</option>
                 <option>January</option>
                 <option>February</option>
                 <option>March</option>
@@ -61,12 +96,22 @@ const SignUp = () => {
                 <option>November</option>
                 <option>December</option>
               </select>
-              <select className="border border-gray-300 rounded-[4px] indent-3 h-[40px] w-[100%]">
+              <select
+                value={day}
+                onChange={(e) => setDay(e.target.value)}
+                className="border border-gray-300 rounded-[4px] indent-3 h-[40px] w-[100%]"
+              >
+                <option value="">Day</option>
                 {Array.from({ length: 31 }, (_, i) => (
                   <option key={i + 1}>{i + 1}</option>
                 ))}
               </select>
-              <select className="border border-gray-300 rounded-[4px] indent-3 h-[40px] w-[100%]">
+              <select
+                value={year}
+                onChange={(e) => setYear(e.target.value)}
+                className="border border-gray-300 rounded-[4px] indent-3 h-[40px] w-[100%]"
+              >
+                <option value="">Year</option>
                 {Array.from({ length: 2025 - 1900 + 1 }, (_, i) => (
                   <option key={i}>{2025 - i}</option>
                 ))}
@@ -90,6 +135,7 @@ const SignUp = () => {
                 <input
                   type="radio"
                   value="female"
+                  onChange={(e) => setGender(e.target.value)}
                   name="gen"
                   className="cursor-poiner"
                 />
@@ -99,6 +145,7 @@ const SignUp = () => {
                 <input
                   type="radio"
                   value="male"
+                  onChange={(e) => setGender(e.target.value)}
                   name="gen"
                   className="cursor-pointer"
                 />
@@ -108,6 +155,7 @@ const SignUp = () => {
                 <input
                   type="radio"
                   value="custom"
+                  onChange={(e) => setGender(e.target.value)}
                   name="gen"
                   className="cursor-poiner"
                 />
@@ -117,10 +165,14 @@ const SignUp = () => {
               <input
                 type="text"
                 placeholder="Mobile number or email"
+                value={numEm}
+                onChange={(e) => setnumEm(e.target.value)}
                 className="border rounded-[4px] h-[45px] border-gray-300 indent-3"
               />
               <input
-                type="text"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 placeholder="New password"
                 className="border rounded-[4px] h-[45px] border-gray-300 indent-3"
               />
