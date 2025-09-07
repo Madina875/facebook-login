@@ -14,9 +14,10 @@ const SignIn = ({ data }) => {
     );
     if (found) {
       navigate("/home");
-    } else {
+    } else if (!found) {
       navigate("/not-user");
-      console.log("Invalid credentials");
+    } else {
+      navigate("/signup");
     }
   };
 
