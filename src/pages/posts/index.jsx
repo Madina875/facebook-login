@@ -4,4 +4,4 @@ const Posts = () => {
   return <div>Posts</div>;
 };
 
-export default Posts;
+export default memo(Posts);

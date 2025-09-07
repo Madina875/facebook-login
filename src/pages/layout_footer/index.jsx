@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
@@ -14,4 +14,4 @@ const FooterLayout = () => {
   );
 };
 
-export default FooterLayout;
+export default memo(FooterLayout);

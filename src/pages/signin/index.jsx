@@ -74,4 +74,4 @@ const SignIn = ({ data }) => {
   );
 };
 
-export default SignIn;
+export default memo(SignIn);

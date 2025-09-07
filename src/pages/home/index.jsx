@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import UserView from "../user_view";
 
 const Home = () => {
@@ -9,4 +9,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default memo(Home);

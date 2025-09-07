@@ -4,4 +4,4 @@ const UserView = () => {
   return <div>UsersView</div>;
 };
 
-export default UserView;
+export default memo(UserView);

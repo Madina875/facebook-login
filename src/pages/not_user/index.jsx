@@ -20,4 +20,4 @@ const NotUser = () => {
   );
 };
 
-export default NotUser;
+export default memo(NotUser);

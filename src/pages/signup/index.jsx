@@ -208,4 +208,4 @@ const SignUp = ({ setData }) => {
   );
 };
 
-export default SignUp;
+export default memo(SignUp);
