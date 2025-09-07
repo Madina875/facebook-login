@@ -14,10 +14,11 @@ const SignIn = ({ data }) => {
     );
     if (found) {
       navigate("/home");
-    } else if (!found) {
-      navigate("/not-user");
     } else {
       navigate("/signup");
+      //   navigate("/not-user");
+      // } else {
+      //   navigate("/signup");
     }
   };
 
