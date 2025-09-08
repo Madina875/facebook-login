@@ -1,14 +1,9 @@
-import axios from "axios";
 import React, { memo, useEffect, useState } from "react";
+import { api } from "../../api";
+import { useFetch } from "../../hook/useFetch";
 
 const PostsView = () => {
-  // const navigate = useNavigate();
-  const [data, setData] = useState(null);
-  useEffect(() => {
-    axios
-      .get(`https://jsonplaceholder.typicode.com/posts`)
-      .then((res) => setData(res.data));
-  }, []);
+  const { data } = useFetch("/posts");
   return (
     <>
       <div className="grid grid-cols-2 rounded-2xl mb-[4%] gap-[30px] p-[30px] bg-gray-100">
