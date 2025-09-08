@@ -1,31 +1,42 @@
 import React, { memo, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const initialState = {
+  firstName: "",
+  lastName: "",
+  month: "",
+  day: "",
+  year: "",
+  gender: "",
+  numEm: "",
+  password: "",
+};
+
 const SignUp = ({ setData }) => {
   const navigate = useNavigate();
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [month, setMonth] = useState("");
-  const [day, setDay] = useState("");
-  const [year, setYear] = useState("");
-  const [gender, setGender] = useState("");
-  const [numEm, setnumEm] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState(initialState);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     let user = {
       id: Date.now(),
-      firstName,
-      lastName,
-      gender,
-      day,
-      month,
-      year,
-      numEm,
-      password,
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      gender: formData.gender,
+      day: formData.day,
+      month: formData.month,
+      year: formData.year,
+      numEm: formData.numEm,
+      password: formData.password,
     };
     setData((prev) => [...prev, user]);
+    // setFormData(initialState); boshatish
+    console.log(user);
   };
 
   return (
@@ -50,15 +61,17 @@ const SignUp = ({ setData }) => {
             <div className="mt-[18px] w-[100%] flex gap-[12px] ">
               <input
                 type="text"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
+                value={formData.firstName}
+                onChange={handleChange}
+                name="firstName"
                 placeholder="First name"
                 className="indent-3 border border-gray-300 h-[45px] w-[100%] rounded-[5px]"
               />
               <input
                 type="text"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
+                value={formData.lastName}
+                name="lastName"
+                onChange={handleChange}
                 placeholder="Last name"
                 className="indent-3 border border-gray-300 h-[45px] w-[100%] rounded-[5px]"
               />
@@ -78,8 +91,9 @@ const SignUp = ({ setData }) => {
             <div className="grid grid-cols-3 gap-[13px] h-[35px] mt-[10px]">
               <select
                 className="border border-gray-300 rounded-[4px] indent-3 h-[40px] w-[100%]"
-                value={month}
-                onChange={(e) => setMonth(e.target.value)}
+                value={formData.month}
+                onChange={handleChange}
+                name="month"
               >
                 <option value="">Month</option>
                 <option>January</option>
@@ -96,8 +110,9 @@ const SignUp = ({ setData }) => {
                 <option>December</option>
               </select>
               <select
-                value={day}
-                onChange={(e) => setDay(e.target.value)}
+                value={formData.day}
+                onChange={handleChange}
+                name="day"
                 className="border border-gray-300 rounded-[4px] indent-3 h-[40px] w-[100%]"
               >
                 <option value="">Day</option>
@@ -106,8 +121,9 @@ const SignUp = ({ setData }) => {
                 ))}
               </select>
               <select
-                value={year}
-                onChange={(e) => setYear(e.target.value)}
+                value={formData.year}
+                name="year"
+                onChange={handleChange}
                 className="border border-gray-300 rounded-[4px] indent-3 h-[40px] w-[100%]"
               >
                 <option value="">Year</option>
@@ -134,8 +150,9 @@ const SignUp = ({ setData }) => {
                 <input
                   type="radio"
                   value="female"
-                  onChange={(e) => setGender(e.target.value)}
-                  name="gen"
+                  onChange={handleChange}
+                  checked={formData.gender === "female"}
+                  name="gender"
                   className="cursor-poiner"
                 />
               </label>
@@ -144,8 +161,9 @@ const SignUp = ({ setData }) => {
                 <input
                   type="radio"
                   value="male"
-                  onChange={(e) => setGender(e.target.value)}
-                  name="gen"
+                  onChange={handleChange}
+                  checked={formData.gender === "male"}
+                  name="gender"
                   className="cursor-pointer"
                 />
               </label>
@@ -154,8 +172,9 @@ const SignUp = ({ setData }) => {
                 <input
                   type="radio"
                   value="custom"
-                  onChange={(e) => setGender(e.target.value)}
-                  name="gen"
+                  onChange={handleChange}
+                  name="gender"
+                  checked={formData.gender === "custom"}
                   className="cursor-poiner"
                 />
               </label>
@@ -164,14 +183,16 @@ const SignUp = ({ setData }) => {
               <input
                 type="text"
                 placeholder="Mobile number or email"
-                value={numEm}
-                onChange={(e) => setnumEm(e.target.value)}
+                value={formData.numEm}
+                name="numEm"
+                onChange={handleChange}
                 className="border rounded-[4px] h-[45px] border-gray-300 indent-3"
               />
               <input
                 type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={formData.password}
+                onChange={handleChange}
+                name="password"
                 placeholder="New password"
                 className="border rounded-[4px] h-[45px] border-gray-300 indent-3"
               />

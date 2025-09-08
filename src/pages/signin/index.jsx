@@ -5,7 +5,6 @@ const SignIn = ({ data }) => {
   const navigate = useNavigate();
   const [emNum, setemNum] = useState("");
   const [password, setPassword] = useState("");
-
   console.log(data);
   const handleSubmit = (e) => {
     e.preventDefault();

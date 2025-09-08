@@ -13,6 +13,7 @@ const AppRouter = () => {
   const [data, setData] = useState(
     JSON.parse(localStorage.getItem("user")) || []
   );
+  console.log(data);
 
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(data));
